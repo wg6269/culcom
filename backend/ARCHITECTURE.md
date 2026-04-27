@@ -102,7 +102,6 @@ com.culcom/
 | `DELETE /api/customers/{seq}` | CustomerController | Command | 고객 삭제 |
 | `POST /api/customers/process-call` | CustomerController | Command | 통화 처리 |
 | `POST /api/customers/reservation` | CustomerController | Command | 예약 생성 |
-| `POST /api/customers/comment` | CustomerController | Command | 코멘트 수정 |
 
 ### 공지사항
 

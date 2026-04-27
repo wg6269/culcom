@@ -94,23 +94,6 @@ public class CustomerService {
     }
 
     @Transactional
-    public void updateName(Long customerSeq, String name) {
-        Customer customer = customerRepository.findById(customerSeq)
-                .orElseThrow(() -> new EntityNotFoundException("고객"));
-        customer.setName(name);
-        customerRepository.save(customer);
-    }
-
-    @Transactional
-    public CustomerCommentResponse updateComment(Long customerSeq, String comment) {
-        Customer customer = customerRepository.findById(customerSeq)
-                .orElseThrow(() -> new EntityNotFoundException("고객"));
-        customer.setComment(comment);
-        customerRepository.save(customer);
-        return new CustomerCommentResponse(comment != null ? comment : "");
-    }
-
-    @Transactional
     public CustomerProcessCallResponse processCall(Long customerSeq, String caller, Long branchSeq) {
         Customer customer = customerRepository.findById(customerSeq)
                 .orElseThrow(() -> new EntityNotFoundException("고객"));

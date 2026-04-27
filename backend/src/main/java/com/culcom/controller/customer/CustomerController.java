@@ -44,18 +44,6 @@ public class CustomerController {
         return ResponseEntity.ok(ApiResponse.ok("고객 삭제 완료", null));
     }
 
-    @PostMapping("/update-name")
-    public ResponseEntity<ApiResponse<Void>> updateName(@Valid @RequestBody CustomerUpdateNameRequest request) {
-        customerService.updateName(request.getCustomerSeq(), request.getName());
-        return ResponseEntity.ok(ApiResponse.<Void>ok("이름 변경 완료", null));
-    }
-
-    @PostMapping("/comment")
-    public ResponseEntity<ApiResponse<CustomerCommentResponse>> updateComment(@Valid @RequestBody CustomerCommentRequest request) {
-        return ResponseEntity.ok(ApiResponse.ok("코멘트 업데이트 완료",
-                customerService.updateComment(request.getCustomerSeq(), request.getComment())));
-    }
-
     @PostMapping("/process-call")
     public ResponseEntity<ApiResponse<CustomerProcessCallResponse>> processCall(
             @Valid @RequestBody CustomerProcessCallRequest request, @AuthenticationPrincipal CustomUserPrincipal principal) {

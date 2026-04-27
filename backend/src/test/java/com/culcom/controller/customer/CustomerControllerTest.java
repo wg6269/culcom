@@ -78,7 +78,7 @@ class CustomerControllerTest {
 
         @Test
         void 고객_목록_페이징_조회() throws Exception {
-            given(customerQueryMapper.search(anyLong(), anyString(), any(), any(), anyInt(), anyInt()))
+            given(customerQueryMapper.search(anyLong(), anyString(), any(), any(), anyInt(), anyInt(), any()))
                     .willReturn(List.of(sampleCustomer()));
             given(customerQueryMapper.count(anyLong(), anyString(), any(), any()))
                     .willReturn(1);
@@ -189,31 +189,6 @@ class CustomerControllerTest {
 
     @Nested
     class Actions {
-
-        @Test
-        void 이름_변경_성공() throws Exception {
-            mockMvc.perform(post("/api/customers/update-name")
-                            .with(auth())
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(objectMapper.writeValueAsString(
-                                    Map.of("customerSeq", 1, "name", "새이름"))))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.message").value("이름 변경 완료"));
-        }
-
-        @Test
-        void 코멘트_업데이트_성공() throws Exception {
-            given(customerService.updateComment(anyLong(), anyString()))
-                    .willReturn(new com.culcom.dto.customer.CustomerCommentResponse("메모입니다"));
-
-            mockMvc.perform(post("/api/customers/comment")
-                            .with(auth())
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(objectMapper.writeValueAsString(
-                                    Map.of("customerSeq", 1, "comment", "메모입니다"))))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.message").value("코멘트 업데이트 완료"));
-        }
 
         @Test
         void 전화상담안함_처리_성공() throws Exception {

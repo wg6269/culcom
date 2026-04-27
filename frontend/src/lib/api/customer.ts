@@ -22,10 +22,6 @@ export const customerApi = {
   create: (data: Partial<Customer>) => api.post<Customer>(API.CUSTOMERS, data),
   update: (seq: number, data: Partial<Customer>) => api.put<Customer>(API.CUSTOMER(seq), data),
   delete: (seq: number) => api.delete<void>(API.CUSTOMER(seq)),
-  updateName: (customerSeq: number, name: string) =>
-    api.post<void>(API.CUSTOMERS_UPDATE_NAME, { customerSeq, name }),
-  updateComment: (customerSeq: number, comment: string) =>
-    api.post<{ comment: string }>(API.CUSTOMERS_COMMENT, { customerSeq, comment }),
   processCall: (customerSeq: number, caller: string) =>
     api.post<{ callCount: number; lastUpdateDate: string }>(API.CUSTOMERS_PROCESS_CALL, { customerSeq, caller }),
   createReservation: (customerSeq: number, caller: string, interviewDate: string) =>

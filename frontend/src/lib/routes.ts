@@ -161,8 +161,6 @@ export const API = {
   // 고객
   CUSTOMERS: A.CUSTOMERS,
   CUSTOMER: (seq: number) => `${A.CUSTOMERS}/${seq}`,
-  CUSTOMERS_UPDATE_NAME: `${A.CUSTOMERS}/update-name`,
-  CUSTOMERS_COMMENT: `${A.CUSTOMERS}/comment`,
   CUSTOMERS_PROCESS_CALL: `${A.CUSTOMERS}/process-call`,
   CUSTOMERS_RESERVATION: `${A.CUSTOMERS}/reservation`,
   CUSTOMERS_MARK_NO_PHONE: `${A.CUSTOMERS}/mark-no-phone-interview`,

@@ -68,8 +68,6 @@ app.get('/api/customers/:seq', (req, res) => { const item = find(data.customers,
 app.post('/api/customers', (req, res) => { const item = { seq: data.nextSeq(), ...req.body, status: '신규', callCount: 0, createdDate: data.now() }; data.customers.push(item); res.json(ok(item, '고객 추가 완료')); });
 app.put('/api/customers/:seq', (req, res) => { const item = find(data.customers, req.params.seq); if (!item) return res.status(404).json(err('not found')); Object.assign(item, req.body, { lastUpdateDate: data.now() }); res.json(ok(item, '고객 수정 완료')); });
 app.delete('/api/customers/:seq', (req, res) => { const i = data.customers.findIndex(c => c.seq === Number(req.params.seq)); if (i >= 0) data.customers.splice(i, 1); res.json(ok(null)); });
-app.post('/api/customers/update-name', (req, res) => { const item = find(data.customers, req.body.customerSeq); if (item) item.name = req.body.name; res.json(ok(null, '이름 변경 완료')); });
-app.post('/api/customers/comment', (req, res) => { const item = find(data.customers, req.body.customerSeq); if (item) item.comment = req.body.comment; res.json(ok({ comment: req.body.comment || '' })); });
 app.post('/api/customers/process-call', (req, res) => {
   const item = find(data.customers, req.body.customerSeq);
   if (!item) return res.status(404).json(err('not found'));

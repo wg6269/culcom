@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,25 +42,25 @@ class QueryMapperTest {
 
     @Test
     void customerSearch_noFilter() {
-        List<CustomerResponse> result = customerQueryMapper.search(1L, "all", null, null, 0, 10);
+        List<CustomerResponse> result = customerQueryMapper.search(1L, "all", null, null, 0, 10, LocalDateTime.now().minusHours(5));
         assertThat(result).isNotNull();
     }
 
     @Test
     void customerSearch_withKeyword() {
-        List<CustomerResponse> result = customerQueryMapper.search(1L, "all", "name", "테스트", 0, 10);
+        List<CustomerResponse> result = customerQueryMapper.search(1L, "all", "name", "테스트", 0, 10, LocalDateTime.now().minusHours(5));
         assertThat(result).isNotNull();
     }
 
     @Test
     void customerSearch_phoneKeyword() {
-        List<CustomerResponse> result = customerQueryMapper.search(1L, "all", "phone", "010", 0, 10);
+        List<CustomerResponse> result = customerQueryMapper.search(1L, "all", "phone", "010", 0, 10, LocalDateTime.now().minusHours(5));
         assertThat(result).isNotNull();
     }
 
     @Test
     void customerSearch_newFilter() {
-        List<CustomerResponse> result = customerQueryMapper.search(1L, "new", null, null, 0, 10);
+        List<CustomerResponse> result = customerQueryMapper.search(1L, "new", null, null, 0, 10, LocalDateTime.now().minusHours(5));
         assertThat(result).isNotNull();
     }
 

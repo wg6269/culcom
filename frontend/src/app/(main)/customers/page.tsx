@@ -259,7 +259,7 @@ function CustomersContent() {
           </div>
         }
         onRowClick={(c) => router.push(ROUTES.CUSTOMER_DETAIL(c.seq))}
-        rowStyle={(c) => c.lastUpdateDate ? { backgroundColor: '#f3e8ff' } : undefined}
+        rowStyle={(c) => c.recentlyCalled ? { backgroundColor: '#f3e8ff' } : undefined}
         emptyMessage="고객이 없습니다."
         emptyAction={<Button onClick={() => router.push(ROUTES.CUSTOMERS_ADD)}>+ 워크인 추가</Button>}
         pagination={{ page, totalPages, onPageChange: (p) => setParams({ page: String(p) }) }}

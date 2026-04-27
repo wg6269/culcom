@@ -12,6 +12,7 @@ export interface Customer {
   status: string;
   createdDate: string;
   lastUpdateDate?: string;
+  recentlyCalled?: boolean;
   smsWarning?: string;
 }
 

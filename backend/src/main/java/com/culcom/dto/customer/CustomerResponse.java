@@ -20,6 +20,7 @@ public class CustomerResponse {
     private String status;
     private LocalDateTime createdDate;
     private LocalDateTime lastUpdateDate;
+    private Boolean recentlyCalled;
 
     @Setter
     private String smsWarning;

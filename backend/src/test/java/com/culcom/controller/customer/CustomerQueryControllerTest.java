@@ -67,7 +67,7 @@ class CustomerQueryControllerTest {
     @Test
     @DisplayName("고객_목록_기본")
     void 목록_기본() throws Exception {
-        given(customerQueryMapper.search(anyLong(), anyString(), any(), any(), anyInt(), anyInt()))
+        given(customerQueryMapper.search(anyLong(), anyString(), any(), any(), anyInt(), anyInt(), any()))
                 .willReturn(List.of(sample(1L, "고객1")));
         given(customerQueryMapper.count(anyLong(), anyString(), any(), any())).willReturn(1);
 
@@ -75,13 +75,13 @@ class CustomerQueryControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.content", hasSize(1)));
 
-        verify(customerQueryMapper).search(eq(5L), eq("all"), isNull(), isNull(), eq(0), eq(20));
+        verify(customerQueryMapper).search(eq(5L), eq("all"), isNull(), isNull(), eq(0), eq(20), any());
     }
 
     @Test
     @DisplayName("고객_목록_필터_검색어_전달")
     void 목록_검색() throws Exception {
-        given(customerQueryMapper.search(anyLong(), anyString(), any(), any(), anyInt(), anyInt()))
+        given(customerQueryMapper.search(anyLong(), anyString(), any(), any(), anyInt(), anyInt(), any()))
                 .willReturn(List.of());
         given(customerQueryMapper.count(anyLong(), anyString(), any(), any())).willReturn(0);
 
@@ -94,7 +94,7 @@ class CustomerQueryControllerTest {
                         .param("size", "5"))
                 .andExpect(status().isOk());
 
-        verify(customerQueryMapper).search(eq(5L), eq("신규"), eq("phone"), eq("1234"), eq(10), eq(5));
+        verify(customerQueryMapper).search(eq(5L), eq("신규"), eq("phone"), eq("1234"), eq(10), eq(5), any());
     }
 
     @Test

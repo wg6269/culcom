@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -69,7 +70,7 @@ class CustomerCallCountExceedTest {
         // MyBatis 쿼리는 DB를 직접 조회하므로, JPA 퍼시스턴스 컨텍스트에 아직 쓰기 반영 전이면
         // 업데이트된 status 를 못 본다. 테스트 내 동일 트랜잭션 안에서는 명시적 flush 가 필요하다.
         em.flush();
-        return customerQueryMapper.search(branch.getSeq(), filter, null, null, 0, 100);
+        return customerQueryMapper.search(branch.getSeq(), filter, null, null, 0, 100, LocalDateTime.now().minusHours(5));
     }
 
     @Nested

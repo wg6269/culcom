@@ -12,12 +12,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/customers")
 @RequiredArgsConstructor
 public class CustomerQueryController {
+
+    private static final int RECENT_CALL_WINDOW_HOURS = 5;
 
     private final CustomerQueryMapper customerQueryMapper;
 
@@ -32,8 +35,9 @@ public class CustomerQueryController {
 
         Long branchSeq = principal.getSelectedBranchSeq();
         int offset = page * size;
+        LocalDateTime recentCutoff = LocalDateTime.now().minusHours(RECENT_CALL_WINDOW_HOURS);
 
-        List<CustomerResponse> list = customerQueryMapper.search(branchSeq, filter, searchType, keyword, offset, size);
+        List<CustomerResponse> list = customerQueryMapper.search(branchSeq, filter, searchType, keyword, offset, size, recentCutoff);
         int total = customerQueryMapper.count(branchSeq, filter, searchType, keyword);
 
         Page<CustomerResponse> result = new PageImpl<>(list, PageRequest.of(page, size), total);

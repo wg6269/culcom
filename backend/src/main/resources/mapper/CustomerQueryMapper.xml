@@ -32,7 +32,12 @@
             c.call_count AS callCount,
             c.status,
             c.created_date AS createdDate,
-            c.last_update_date AS lastUpdateDate
+            c.last_update_date AS lastUpdateDate,
+            CASE WHEN EXISTS (
+                SELECT 1 FROM caller_selection_history h
+                WHERE h.customer_id = c.seq
+                  AND h.selected_date >= #{recentCutoff}
+            ) THEN 1 ELSE 0 END AS recentlyCalled
         FROM customers c
         <include refid="searchCondition"/>
         ORDER BY c.created_date DESC

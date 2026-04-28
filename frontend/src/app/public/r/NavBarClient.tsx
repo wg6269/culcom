@@ -75,6 +75,7 @@ export default function NavBarClient({ kakaoLoginHref }: { kakaoLoginHref: strin
             <a href={kakaoLoginHref} className="nav-cta">무료 체험 신청</a>
           </li>
         </ul>
+        <a href={kakaoLoginHref} className="nav-mobile-cta">무료레벨테스트신청하기</a>
         <button
           className="hamburger"
           type="button"

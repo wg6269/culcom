@@ -159,6 +159,25 @@
   transition: background 0.2s, transform 0.2s !important;
 }
 .eut-landing .nav-cta:hover { background: var(--color-accent-light) !important; transform: translateY(-1px); }
+.eut-landing .nav-mobile-cta {
+  display: none;
+  background: var(--color-accent);
+  color: #fff !important;
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  margin-left: auto;
+  margin-right: 10px;
+  transition: background 0.2s, transform 0.2s;
+}
+.eut-landing .nav-mobile-cta:hover {
+  background: var(--color-accent-light);
+  transform: translateY(-1px);
+}
 .eut-landing .hamburger {
   display: none;
   flex-direction: column;
@@ -213,6 +232,14 @@
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center top;
+}
+.eut-landing .hero-slide {
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+  z-index: 0;
+}
+.eut-landing .hero-slide.active {
+  opacity: 1;
 }
 .eut-landing #hero-video {
   position: absolute;
@@ -632,9 +659,36 @@
 .eut-landing .program-target {
   font-size: 0.95rem;
   color: rgba(255,255,255,0.55);
+  margin-bottom: 8px;
+}
+.eut-landing .program-target-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-bottom: 28px;
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.eut-landing .program-target-items li {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.eut-landing .program-item-header {
+  display: block;
+  position: relative;
+  margin: 4px 0 18px;
+  padding: 14px 18px 14px 22px;
+  background: linear-gradient(135deg, rgba(233,69,96,0.18) 0%, rgba(233,69,96,0.04) 100%);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  white-space: pre-line;
+  box-shadow: 0 2px 12px rgba(233,69,96,0.12);
 }
 .eut-landing .program-list { display: flex; flex-direction: column; gap: 14px; }
 .eut-landing .program-list li {
@@ -924,6 +978,7 @@
 @media (max-width: 768px) {
   .eut-landing .section { padding: 70px 0; }
   .eut-landing .nav-links { display: none; }
+  .eut-landing .nav-mobile-cta { display: inline-flex; align-items: center; }
   .eut-landing .hamburger { display: flex; }
   .eut-landing .mobile-menu.open { display: flex; }
   .eut-landing .pain-photo-grid { grid-template-columns: 1fr; }
@@ -940,4 +995,5 @@
   .eut-landing .section-title { font-size: 1.7rem; }
   .eut-landing .program-tabs { gap: 8px; }
   .eut-landing .tab-btn { padding: 9px 18px; font-size: 0.85rem; }
+  .eut-landing .nav-mobile-cta { padding: 7px 12px; font-size: 0.72rem; }
 }

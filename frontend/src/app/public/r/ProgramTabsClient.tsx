@@ -10,6 +10,8 @@ interface Panel {
   badge: string;
   title: string;
   target: string;
+  targetItems: string[];
+  itemHeader: string;
   items: string[];
 }
 
@@ -18,52 +20,76 @@ const PANELS: Panel[] = [
     key: 'level0',
     label: 'Level 0',
     badge: '👶 Level 0',
-    title: '왕초보',
-    target: '대상: 영어가 처음이거나 오랫동안 손을 놓은 분',
+    title: '왕초보 : "머릿속에 단어는 맴도는데, 문장으로 안 나와요..” ',
+    target: '대상',
+    targetItems: [
+      "✔ '단어 나열'이 한계인 분",
+      '✔ 용기는 있지만 방법이 막막한 분',
+    ],
+    itemHeader: '[커리큘럼 안내: "말문이 트이는 기분 좋은 경험"]',
     items: [
-      '✔ 기초 인사 & 자기소개',
-      '✔ 일상 표현 20가지 완벽 습득',
-      '✔ 영어에 대한 두려움 제거',
-      '✔ 짧은 문장으로 말문 트기',
+      '✔ 한 문장의 뼈대 세우기 (기초 단어 & 문법)',
+      '✔ 성취감을 주는 셀프 복습',
+      '✔ 단어에서 문장으로, 퀀텀 점프',
+      '✔ 해외여행 100% 활용하기 (실전 시뮬레이션)',
     ],
   },
   {
     key: 'level1',
-    label: 'Level 1',
+    label: 'Level 1 : 단어의 나열을 넘어 문장으로',
     badge: '🌱 Level 1',
-    title: '초급',
-    target: '대상: 알파벳은 아는데 막상 말이 안 되는 분',
+    title: '"머릿속에 있는 영어를 입 밖으로 꺼내는 시간"',
+    target: '대상',
+    targetItems: [
+      "✔ '단어 조립'이 어려운 분",
+      "✔ 시험용 영어에만 익숙한 분",
+      "✔ 여행지에서 \'진짜 대화\'를 하고 싶은 분",
+      '✔ 토스 레벨5, 오픽 IL~IM이상 목표하시는분',
+    ],
+    itemHeader: '[커리큘럼 안내: "생각하는 영어가 아닌 말하는 영어"]\n',
     items: [
-      '✔ 일상 주제별 대화 패턴',
-      '✔ 짧은 문장 → 연결 문장으로 확장',
-      '✔ 쇼핑·음식·날씨 등 실전 표현',
-      '✔ 소규모 그룹 대화 참여',
+      '✔ 원어민이 매일 쓰는 \'만능 패턴\' 장착',
+      '✔ 단어 조립법 익히기 (말문 트기 훈련)',
+      '✔ 어색함 제로! 리얼 스몰톡(Small Talk)',
+      '✔ 상황별 서바이벌 회화',
     ],
   },
   {
     key: 'level2',
-    label: 'Level 2',
+    label: 'Level 2 : 교과서를 넘어 \'진짜 영어\'의 세계로',
     badge: '🚀 Level 2',
-    title: '중급',
-    target: '대상: 단어는 아는데 문장이 막히는 분',
+    title: '"문법은 맞는데 왜 어색할까요? 이제는 \'공부\'가 아닌 \'경험\'이 필요할 때"',
+    target: '대상',
+    targetItems: [
+      "✔ '원어민 속도'에 당황하는 분",
+      "✔ 기본기는 있지만 2%가 부족한 분",
+      "✔ 토스 LV6이상 오픽 IM이상 목표하시는 분",
+    ],
+    itemHeader: '[커리큘럼 안내: "살아있는 영어, 감각으로 익히다"]',
     items: [
-      '✔ 토픽별 의견 말하기 훈련',
-      '✔ 뉴스·이슈·문화 주제 토론',
-      '✔ 자연스러운 영어 리듬 익히기',
-      '✔ 즉흥 대화 반응 속도 향상',
+      '✔ 공부식 영어가 아닌 \'체험식 영어\'',
+      '✔ 0.1초 만에 반응하는 \'실전 대화 속도\'',
+      '✔ 원어민의 한 끗 차이, \'구동사(Phrasal Verbs)\' 정복',
+      '✔ 뉘앙스의 차이를 이해하는 세련된 회화',
     ],
   },
   {
     key: 'freetalking',
-    label: 'Free Talking',
+    label: '프리토킹 : 일상을 넘어 프로페셔널의 세계로',
     badge: '💬 Free Talking',
     title: '프리토킹',
-    target: '대상: 어느 정도 되는데 더 늘리고 싶은 분',
+    target: '대상',
+    targetItems: [
+      "✔ 스몰톡의 한계를 느끼는 분",
+      "✔ OPIc AL이나 토익 스피킹 최고 등급을 목표하시는 분",
+      "✔ 글로벌 비즈니스 매너가 고픈 직장인",
+    ],
+    itemHeader: '[커리큘럼 안내: "성과로 증명되는 고품격 회화"]',
     items: [
-      '✔ 제한 없는 자유 주제 대화',
-      '✔ 고급 표현 & 슬랭 자연스럽게 활용',
-      '✔ 원어민 감각 대화 훈련',
-      '✔ 네트워킹 이벤트 우선 참여 기회',
+      '✔ OPIc / 토스 완벽 대비 (Logic Building)',
+      '✔ 실전 비즈니스 영어 & 세련된 애티튜드',
+      '✔ 원어민의 \'Real\' 실전 표현 마스터',
+      '✔ 다국적 원어민과의 글로벌 네트워킹',
     ],
   },
 ];
@@ -93,7 +119,21 @@ export default function ProgramTabsClient() {
           >
             <div className="program-badge">{p.badge}</div>
             <h3 className="program-title">{p.title}</h3>
-            <p className="program-target">{p.target}</p>
+            <p className="program-target">
+              <a
+                href="https://pf-link.kakao.com/qr/_kXQxlX/pages/_xlM?query=state%3D1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {p.target}
+              </a>
+            </p>
+            <ul className="program-target-items">
+              {p.targetItems.map(it => (
+                <li key={it}>{it}</li>
+              ))}
+            </ul>
+            <div className="program-item-header">{p.itemHeader}</div>
             <ul className="program-list">
               {p.items.map(it => (
                 <li key={it}>{it}</li>

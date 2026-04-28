@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import { calendarApi, type CalendarReservation, type CalendarEvent } from '@/lib/api';
 import { useApiQuery } from '@/hooks/useApiQuery';
-import { queryClient } from '@/lib/queryClient';
+import { invalidateAll, RESERVATION_RELATED } from '@/lib/invalidate';
 import {
   type Reservation, type CalendarEventItem, type ViewMode, DAY_LABELS,
   formatDateKey, getWeekDates, getMonthDates, isSameDay, toReservationMap, toEventMap, getStatusStyle,
@@ -47,7 +47,7 @@ export default function CalendarPage() {
   const reservationMap = useMemo(() => toReservationMap(rawReservations ?? []), [rawReservations]);
   const eventMap = useMemo(() => toEventMap(rawEvents ?? []), [rawEvents]);
 
-  const invalidateReservations = () => queryClient.invalidateQueries({ queryKey: ['reservations'] });
+  const invalidateReservations = () => invalidateAll(RESERVATION_RELATED);
 
   const getReservations = (date: Date): Reservation[] => reservationMap[formatDateKey(date)] || [];
   const getEvents = (date: Date): CalendarEventItem[] => eventMap[formatDateKey(date)] || [];

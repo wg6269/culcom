@@ -28,6 +28,12 @@ export const ATTENDANCE_RELATED: string[] = [
   'complexDashboard',
 ];
 
+/** 캘린더 상담 예약 변경 시 함께 무효화할 키들 (대시보드 알림/트렌드도 예약 흐름에 영향받음) */
+export const RESERVATION_RELATED: string[] = [
+  'reservations',
+  'complexDashboard',
+];
+
 /** 전달된 키 배열을 일괄 invalidate (prefix 매칭) */
 export function invalidateAll(keys: string[]) {
   keys.forEach((k) => queryClient.invalidateQueries({ queryKey: [k] }));

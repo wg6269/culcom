@@ -15,8 +15,6 @@ import ConfirmModal from '@/components/ui/ConfirmModal';
 import SearchBar from '@/components/ui/SearchBar';
 import DataTable, { type Column } from '@/components/ui/DataTable';
 import { Button } from '@/components/ui/Button';
-import FormErrorBanner from '@/components/ui/FormErrorBanner';
-import { useFormError } from '@/hooks/useFormError';
 import { useModal } from '@/hooks/useModal';
 import SmsModal from './SmsModal';
 
@@ -79,7 +77,6 @@ function CustomersContent() {
   const [interviewInputs, setInterviewInputs] = useState<Record<number, string>>({});
   const interviewConfirmModal = useModal<InterviewModal>();
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
-  const { error: formError, setError: setFormError, clear: clearFormError } = useFormError();
 
   // SMS 모달
   const smsModal = useModal<{ name: string; phone: string; interviewDate?: string }>();
@@ -119,11 +116,10 @@ function CustomersContent() {
   // 인터뷰 확정
   const handleInterviewConfirm = (seq: number) => {
     const input = interviewInputs[seq]?.trim();
-    if (!input) { setFormError('인터뷰 일시를 입력해주세요.'); return; }
+    if (!input) { setResult({ success: false, message: '인터뷰 일시를 입력해주세요.' }); return; }
     const customer = customers.find(c => c.seq === seq);
     const caller = selectedCallers[seq];
-    if (!caller) { setFormError('먼저 CALLER를 선택해주세요.'); return; }
-    clearFormError();
+    if (!caller) { setResult({ success: false, message: '먼저 CALLER를 선택해주세요.' }); return; }
     if (!customer) return;
     interviewConfirmModal.open({ customerSeq: seq, customerName: customer.name, caller });
   };
@@ -152,8 +148,7 @@ function CustomersContent() {
 
   const handleMarkNoPhone = (seq: number) => {
     const caller = selectedCallers[seq];
-    if (!caller) { setFormError('먼저 CALLER를 선택해주세요.'); return; }
-    clearFormError();
+    if (!caller) { setResult({ success: false, message: '먼저 CALLER를 선택해주세요.' }); return; }
     noPhoneModal.open(seq);
   };
 
@@ -233,8 +228,6 @@ function CustomersContent() {
         onSearchTypeChange={(v) => setParams({ searchType: v })}
         actions={<Link href={ROUTES.CUSTOMERS_ADD} className="btn-primary btn-nav">+ 워크인 추가</Link>}
       />
-
-      <FormErrorBanner error={formError} />
 
       <DataTable
         columns={customerColumns}

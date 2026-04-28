@@ -5,6 +5,14 @@ import GalleryClient from './GalleryClient';
 import ProgramTabsClient from './ProgramTabsClient';
 import FaqClient from './FaqClient';
 import FadeUpObserver from './FadeUpObserver';
+import HeroBackgroundClient from './HeroBackgroundClient';
+
+const HERO_BG_IMAGES = [
+  '/images/r/hero-bg.png',
+  '/images/r/space-shot.png',
+  '/images/r/study-shot.png',
+  '/images/r/event-shot.png',
+];
 
 // 기존 시스템의 카카오 회원가입/로그인 진입점.
 // KakaoOAuthController.login(@GetMapping("/login")) 이 kakao 인가 URL 로 302 redirect.
@@ -105,16 +113,8 @@ export default function LandingPage() {
       {/* ===== HERO ===== */}
       <section id="hero">
         <div className="hero-video-wrap">
+          <HeroBackgroundClient images={HERO_BG_IMAGES} alt="E-uT 영어회화 커뮤니티" />
           <div className="hero-overlay" />
-          <Image
-            src="/images/r/hero-bg.png"
-            alt="E-uT 영어회화 커뮤니티"
-            fill
-            priority
-            sizes="100vw"
-            className="hero-fallback"
-            style={{ objectFit: 'cover', objectPosition: 'center top' }}
-          />
         </div>
         <div className="hero-content fade-in">
           <p className="hero-eyebrow">English conversation community</p>
@@ -174,7 +174,44 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
+      {/* ===== COMPARE TABLE + CTA ===== */}
+      <section id="compare" className="section bg-light">
+        <div className="container">
+          <div className="section-header fade-up">
+            <p className="section-label">무엇이 다른가요?</p>
+            <h2 className="section-title">
+              <span className="accent">&#39;영어학원&#39;</span>과 <span className="accent">&#39;E-uT 스터디&#39;</span>,
+              <br />
+              무엇이 다른가요?
+            </h2>
+          </div>
+          <div className="compare-table-wrap fade-up">
+            <table className="compare-table">
+              <thead>
+              <tr>
+                <th className="th-item">비교 항목</th>
+                <th className="th-school">영어학원</th>
+                <th className="th-eut">E-uT 스터디 ✅</th>
+              </tr>
+              </thead>
+              <tbody>
+              {COMPARE_ROWS.map(r => (
+                  <tr key={r.item}>
+                    <td>{r.item}</td>
+                    <td className="col-school">{r.school}</td>
+                    <td className="col-eut">{r.eut}</td>
+                  </tr>
+              ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="compare-cta fade-up">
+            <a href={KAKAO_LOGIN_URL} className="btn btn-primary">
+              무료 체험 신청하기 →
+            </a>
+          </div>
+        </div>
+      </section>
       {/* ===== WHY E-uT ===== */}
       <section id="why-eut" className="section bg-white">
         <div className="container">
@@ -216,46 +253,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      {/* ===== COMPARE TABLE + CTA ===== */}
-      <section id="compare" className="section bg-light">
-        <div className="container">
-          <div className="section-header fade-up">
-            <p className="section-label">무엇이 다른가요?</p>
-            <h2 className="section-title">
-              <span className="accent">&#39;영어학원&#39;</span>과 <span className="accent">&#39;E-uT 스터디&#39;</span>,
-              <br />
-              무엇이 다른가요?
-            </h2>
-          </div>
-          <div className="compare-table-wrap fade-up">
-            <table className="compare-table">
-              <thead>
-                <tr>
-                  <th className="th-item">비교 항목</th>
-                  <th className="th-school">영어학원</th>
-                  <th className="th-eut">E-uT 스터디 ✅</th>
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARE_ROWS.map(r => (
-                  <tr key={r.item}>
-                    <td>{r.item}</td>
-                    <td className="col-school">{r.school}</td>
-                    <td className="col-eut">{r.eut}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="compare-cta fade-up">
-            <a href={KAKAO_LOGIN_URL} className="btn btn-primary">
-              무료 체험 신청하기 →
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* ===== GALLERY ===== */}
       <section id="gallery" className="section bg-white">
         <div className="container">
@@ -360,12 +357,12 @@ export default function LandingPage() {
             <a href="#faq">FAQ</a>
           </div>
           <div className="footer-social">
-            <a href="#" aria-label="인스타그램">
+            <a href="https://www.instagram.com/eut_gumi/" aria-label="인스타그램">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
             </a>
-            <a href="#" aria-label="카카오톡">
+            <a href="https://pf-link.kakao.com/qr/_kXQxlX/pages/_xlM?query=state%3D1" aria-label="카카오톡">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 3C6.48 3 2 6.69 2 11.22c0 2.86 1.82 5.38 4.6 6.9l-1.17 4.37 5.1-3.36c.47.07.96.1 1.47.1 5.52 0 10-3.69 10-8.22S17.52 3 12 3z" />
               </svg>

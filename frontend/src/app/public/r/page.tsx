@@ -8,10 +8,14 @@ import FadeUpObserver from './FadeUpObserver';
 import HeroBackgroundClient from './HeroBackgroundClient';
 
 const HERO_BG_IMAGES = [
-  '/images/r/hero-bg.png',
-  '/images/r/space-shot.png',
-  '/images/r/study-shot.png',
-  '/images/r/event-shot.png',
+  '/images/r/heros/hero1.jpg',
+  '/images/r/heros/hero2.jpg',
+  '/images/r/heros/hero3.jpg',
+  '/images/r/heros/hero4.jpg',
+  '/images/r/heros/hero5.jpg',
+  '/images/r/heros/hero6.jpg',
+  '/images/r/heros/hero7.jpg',
+  '/images/r/heros/hero8.jpg',
 ];
 
 // 기존 시스템의 카카오 회원가입/로그인 진입점.

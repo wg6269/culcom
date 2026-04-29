@@ -18,7 +18,7 @@ interface Panel {
 const PANELS: Panel[] = [
   {
     key: 'level0',
-    label: 'Level 0',
+    label: 'Level 0 : 영어와 친해지는 첫걸음',
     badge: '👶 Level 0',
     title: '왕초보 : "머릿속에 단어는 맴도는데, 문장으로 안 나와요..” ',
     target: '대상',

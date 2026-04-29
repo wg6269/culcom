@@ -61,14 +61,14 @@
 }
 .eut-landing .section-label.light { color: var(--color-accent-light); }
 .eut-landing .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.5rem, 4.6vw, 2.8rem);
   font-weight: 900;
-  line-height: 1.25;
+  line-height: 1.28;
   color: var(--color-dark);
   margin-bottom: 18px;
 }
 .eut-landing .section-title.light { color: #fff; }
-.eut-landing .section-desc { font-size: 1.05rem; color: var(--color-muted); line-height: 1.8; }
+.eut-landing .section-desc { font-size: clamp(0.92rem, 1.6vw, 1.05rem); color: var(--color-muted); line-height: 1.75; }
 .eut-landing .section-desc.light { color: rgba(255,255,255,0.7); }
 .eut-landing .accent { color: var(--color-accent); }
 
@@ -275,20 +275,20 @@
   margin-bottom: 20px;
 }
 .eut-landing .hero-title {
-  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  font-size: clamp(1.8rem, 6.4vw, 4.8rem);
   font-weight: 900;
   color: #fff;
-  line-height: 1.18;
-  margin-bottom: 24px;
+  line-height: 1.22;
+  margin-bottom: 22px;
   text-shadow: 0 2px 24px rgba(0,0,0,0.3);
 }
 .eut-landing .hero-sub {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-size: clamp(0.92rem, 2.4vw, 1.3rem);
   color: rgba(255,255,255,0.85);
-  line-height: 1.8;
-  margin-bottom: 40px;
+  line-height: 1.75;
+  margin-bottom: 36px;
 }
-.eut-landing .hero-btn { font-size: 1.05rem; padding: 17px 44px; }
+.eut-landing .hero-btn { font-size: clamp(0.92rem, 1.4vw, 1.05rem); padding: 17px 44px; }
 .eut-landing .scroll-arrow {
   position: absolute;
   bottom: 36px;
@@ -938,11 +938,28 @@
 }
 .eut-landing .footer-social a:hover { color: var(--color-accent-light); transform: translateY(-2px); }
 .eut-landing .footer-bottom {
-  text-align: center;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 40px;
   font-size: 0.82rem;
   color: rgba(255,255,255,0.25);
 }
+.eut-landing .footer-copyright {
+  grid-column: 2;
+  margin: 0;
+  text-align: center;
+}
+.eut-landing .footer-business {
+  grid-column: 3;
+  justify-self: end;
+  text-align: right;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.32);
+}
+.eut-landing .footer-business p { margin: 0; }
 
 /* =========================
    SCROLL ANIMATIONS
@@ -973,27 +990,198 @@
 @media (max-width: 900px) {
   .eut-landing .why-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
   .eut-landing .reviews-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .eut-landing .why-photo-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
+  .eut-landing .why-photo-card--wide { grid-column: auto; }
+  .eut-landing .why-photo-card--wide .why-photo-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .eut-landing .why-photo-card--wide .why-photo-body h3 { min-width: 0; }
+  .eut-landing .why-photo-card--wide .why-photo-img { height: 220px; }
 }
 
 @media (max-width: 768px) {
-  .eut-landing .section { padding: 70px 0; }
+  /* Layout 기본 */
+  .eut-landing .section { padding: 64px 0; }
+  .eut-landing .container { padding: 0 18px; }
+  .eut-landing .section-header { margin-bottom: 40px; }
+
+  /* Navbar */
   .eut-landing .nav-links { display: none; }
   .eut-landing .nav-mobile-cta { display: inline-flex; align-items: center; }
   .eut-landing .hamburger { display: flex; }
   .eut-landing .mobile-menu.open { display: flex; }
-  .eut-landing .pain-photo-grid { grid-template-columns: 1fr; }
-  .eut-landing .pain-photo-img { width: 130px; }
-  .eut-landing .slide { height: 300px; }
-  .eut-landing .program-panel { padding: 28px 22px; }
-  .eut-landing .footer-inner { flex-direction: column; align-items: center; text-align: center; }
-  .eut-landing .footer-brand p { max-width: 100%; }
-  .eut-landing .compare-table th, .eut-landing .compare-table td { padding: 12px 14px; font-size: 0.85rem; }
+  .eut-landing .nav-logo { font-size: 1.4rem; }
+
+  /* Hero */
+  .eut-landing #hero { min-height: 540px; height: 92vh; }
+  .eut-landing .hero-content { padding: 0 18px; }
+  .eut-landing .hero-eyebrow { font-size: 0.74rem; margin-bottom: 14px; letter-spacing: 0.16em; }
+  .eut-landing .hero-sub { margin-bottom: 30px; }
+  .eut-landing .hero-btn { padding: 14px 30px; }
+  .eut-landing .scroll-arrow { bottom: 24px; }
+
+  /* Pain Points */
+  .eut-landing .pain-photo-grid { grid-template-columns: 1fr; gap: 14px; margin-bottom: 32px; }
+  .eut-landing .pain-photo-card { min-height: 130px; }
+  .eut-landing .pain-photo-img { width: 120px; }
+  .eut-landing .pain-photo-text { padding: 16px 18px; gap: 6px; }
+  .eut-landing .pain-photo-text p { font-size: 0.94rem; line-height: 1.6; }
+  .eut-landing .pain-emoji { font-size: 1.4rem; }
+  .eut-landing .pain-cta-text { font-size: 1rem; }
+
+  /* Why */
+  .eut-landing .why-photo-grid { gap: 18px; }
+  .eut-landing .why-photo-img { height: 200px; }
+  .eut-landing .why-photo-body { padding: 18px 20px 22px; }
+  .eut-landing .why-photo-body h3 { font-size: 1.05rem; }
+  .eut-landing .why-photo-body p { font-size: 0.92rem; line-height: 1.65; }
+
+  /* Compare Table */
+  .eut-landing .compare-table { font-size: 0.9rem; min-width: 480px; }
+  .eut-landing .compare-table th { padding: 12px 10px; font-size: 0.86rem; }
+  .eut-landing .compare-table td { padding: 12px 10px; }
+  .eut-landing .badge { padding: 2px 8px; font-size: 0.68rem; margin-left: 4px; }
+  .eut-landing .compare-table-wrap { -webkit-overflow-scrolling: touch; }
+
+  /* Gallery */
+  .eut-landing .slide { height: 280px; }
+  .eut-landing .slider-btn { width: 38px; height: 38px; font-size: 1rem; }
+  .eut-landing .slider-prev { left: 8px; }
+  .eut-landing .slider-next { right: 8px; }
+  .eut-landing .slide-caption { padding: 32px 18px 18px; font-size: 0.95rem; }
+
+  /* Programs */
+  .eut-landing .program-tabs { gap: 8px; margin-bottom: 28px; }
+  .eut-landing .tab-btn { padding: 9px 16px; font-size: 0.85rem; }
+  .eut-landing .program-panel { padding: 26px 20px; }
+  .eut-landing .program-badge { font-size: 0.78rem; padding: 5px 14px; margin-bottom: 14px; }
+  .eut-landing .program-title { font-size: 1.3rem; line-height: 1.38; }
+  .eut-landing .program-target { font-size: 0.92rem; }
+  .eut-landing .program-target-items { gap: 4px; margin-bottom: 22px; padding-bottom: 18px; }
+  .eut-landing .program-target-items li { font-size: 0.92rem; }
+  .eut-landing .program-item-header { padding: 12px 14px 12px 16px; font-size: 0.95rem; margin: 4px 0 14px; }
+  .eut-landing .program-list { gap: 10px; }
+  .eut-landing .program-list li { font-size: 0.95rem; }
+
+  /* Reviews ticker */
+  .eut-landing .ticker-track { gap: 14px; animation-duration: 60s; }
+  .eut-landing .rv-card { width: 280px; padding: 18px 20px 16px; gap: 12px; }
+  .eut-landing .rv-img { width: 44px; height: 44px; }
+  .eut-landing .rv-name { font-size: 0.94rem; }
+  .eut-landing .rv-job { font-size: 0.78rem; }
+  .eut-landing .rv-text { font-size: 0.9rem; line-height: 1.7; }
+  .eut-landing .ticker-outer {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+
+  /* Final CTA */
+  .eut-landing .cta-eyebrow { font-size: 0.74rem; margin-bottom: 12px; }
+  .eut-landing .cta-desc { font-size: 0.98rem; margin-bottom: 28px; line-height: 1.7; }
+  .eut-landing .cta-note { font-size: 0.82rem; margin-top: 14px; }
+
+  /* FAQ */
+  .eut-landing .faq-q { padding: 18px 20px; font-size: 0.98rem; }
+  .eut-landing .faq-a p { padding: 0 20px 20px; font-size: 0.93rem; line-height: 1.7; }
+
+  /* Footer */
+  .eut-landing #footer { padding-top: 44px; }
+  .eut-landing .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
+    padding-bottom: 36px;
+  }
+  .eut-landing .footer-brand p { max-width: 100%; font-size: 0.9rem; }
+  .eut-landing .footer-links { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 16px 18px; }
+  .eut-landing .footer-links a { font-size: 0.92rem; }
+  .eut-landing .footer-bottom {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    font-size: 0.8rem;
+    padding: 16px 16px 20px;
+  }
+  .eut-landing .footer-copyright { grid-column: 1; }
+  .eut-landing .footer-business {
+    grid-column: 1;
+    justify-self: center;
+    text-align: center;
+  }
+
+  /* Buttons */
+  .eut-landing .btn { padding: 13px 30px; }
 }
 
 @media (max-width: 480px) {
-  .eut-landing .hero-title { font-size: 2.1rem; }
-  .eut-landing .section-title { font-size: 1.7rem; }
-  .eut-landing .program-tabs { gap: 8px; }
-  .eut-landing .tab-btn { padding: 9px 18px; font-size: 0.85rem; }
-  .eut-landing .nav-mobile-cta { padding: 7px 12px; font-size: 0.72rem; }
+  /* Layout */
+  .eut-landing .section { padding: 52px 0; }
+  .eut-landing .container { padding: 0 16px; }
+  .eut-landing .section-header { margin-bottom: 32px; }
+  .eut-landing .section-label { font-size: 0.72rem; margin-bottom: 10px; }
+
+  /* Navbar */
+  .eut-landing .nav-mobile-cta { padding: 6px 11px; font-size: 0.74rem; }
+  .eut-landing .mobile-link { font-size: 0.95rem; }
+
+  /* Hero */
+  .eut-landing #hero { min-height: 500px; height: 88vh; }
+  .eut-landing .hero-title { margin-bottom: 18px; }
+  .eut-landing .hero-sub { margin-bottom: 26px; }
+  .eut-landing .hero-btn { padding: 13px 26px; }
+
+  /* Pain Points */
+  .eut-landing .pain-photo-img { width: 105px; }
+  .eut-landing .pain-photo-text { padding: 14px 14px; }
+  .eut-landing .pain-photo-text p { font-size: 0.9rem; line-height: 1.55; }
+  .eut-landing .pain-cta-text { font-size: 0.95rem; }
+
+  /* Why */
+  .eut-landing .why-photo-img { height: 180px; }
+  .eut-landing .why-photo-tag { font-size: 0.68rem; padding: 4px 10px; }
+  .eut-landing .why-photo-body h3 { font-size: 1rem; }
+  .eut-landing .why-photo-body p { font-size: 0.88rem; }
+
+  /* Programs */
+  .eut-landing .program-tabs { gap: 6px; }
+  .eut-landing .tab-btn { padding: 8px 14px; font-size: 0.8rem; }
+  .eut-landing .program-panel { padding: 22px 16px; }
+  .eut-landing .program-title { font-size: 1.18rem; }
+  .eut-landing .program-target { font-size: 0.88rem; }
+  .eut-landing .program-target-items li { font-size: 0.88rem; }
+  .eut-landing .program-item-header { font-size: 0.9rem; padding: 10px 12px 10px 14px; }
+  .eut-landing .program-list li { font-size: 0.9rem; }
+
+  /* Compare */
+  .eut-landing .compare-table { min-width: 420px; font-size: 0.86rem; }
+
+  /* Reviews */
+  .eut-landing .rv-card { width: 260px; }
+  .eut-landing .rv-text { font-size: 0.88rem; }
+
+  /* CTA */
+  .eut-landing .cta-title { line-height: 1.22; }
+  .eut-landing .cta-desc { font-size: 0.94rem; }
+
+  /* FAQ */
+  .eut-landing .faq-q { font-size: 0.94rem; padding: 16px 18px; }
+  .eut-landing .faq-a p { font-size: 0.9rem; padding: 0 18px 18px; }
+
+  /* Footer */
+  .eut-landing .footer-brand p { font-size: 0.86rem; }
+  .eut-landing .footer-links a { font-size: 0.88rem; }
+
+  /* Buttons */
+  .eut-landing .btn { padding: 12px 26px; }
+}
+
+/* Touch/portrait safe-area & accessibility */
+@media (hover: none) and (pointer: coarse) {
+  .eut-landing .pain-photo-card:hover { transform: none; box-shadow: var(--shadow); border-color: #eee; }
+  .eut-landing .pain-photo-card:hover .pain-photo-img img { transform: none; }
+  .eut-landing .why-photo-card:hover { transform: none; box-shadow: var(--shadow); border-color: #eee; }
+  .eut-landing .why-photo-card:hover .why-photo-img img { transform: none; }
+  .eut-landing .rv-card:hover { transform: none; box-shadow: var(--shadow); border-color: #eee; }
 }

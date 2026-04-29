@@ -370,7 +370,13 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2025 E-uT (English uTopia). All rights reserved.</p>
+          <p className="footer-copyright">© 2026 EUT (Experience, You Together). All rights reserved.</p>
+          <div className="footer-business">
+            <p>등록번호 : 제3059호</p>
+            <p>학원명칭 : 구미영어회화이웃(EUT)학원</p>
+            <p>사업자등록번호 : 181-97-02141</p>
+            <p>주소 : 경상북도 구미시 옥계북로 34, 7층 702호</p>
+          </div>
         </div>
       </footer>
     </div>

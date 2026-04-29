@@ -357,14 +357,41 @@ export default function LandingPage() {
             <a href="#faq">FAQ</a>
           </div>
           <div className="footer-social">
-            <a href="https://www.instagram.com/eut_gumi/" aria-label="인스타그램">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            <a href="https://www.instagram.com/eut_gumi/" aria-label="인스타그램" className="social-ig">
+              <svg width="104" height="104" viewBox="0 0 24 24" aria-hidden="true">
+                <defs>
+                  <linearGradient id="ig-grad" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#FED576" />
+                    <stop offset="25%" stopColor="#F47133" />
+                    <stop offset="55%" stopColor="#BC3081" />
+                    <stop offset="80%" stopColor="#4C63D2" />
+                    <stop offset="100%" stopColor="#5851DB" />
+                  </linearGradient>
+                </defs>
+                <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig-grad)" />
+                <rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" strokeWidth="1.6" />
+                <circle cx="12" cy="12" r="3.4" fill="none" stroke="#fff" strokeWidth="1.6" />
+                <circle cx="17" cy="7" r="1" fill="#fff" />
               </svg>
             </a>
-            <a href="https://pf-link.kakao.com/qr/_kXQxlX/pages/_xlM?query=state%3D1" aria-label="카카오톡">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3C6.48 3 2 6.69 2 11.22c0 2.86 1.82 5.38 4.6 6.9l-1.17 4.37 5.1-3.36c.47.07.96.1 1.47.1 5.52 0 10-3.69 10-8.22S17.52 3 12 3z" />
+            <a href="https://pf-link.kakao.com/qr/_kXQxlX/pages/_xlM?query=state%3D1" aria-label="카카오톡" className="social-kakao">
+              <svg width="104" height="104" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="1" y="1" width="22" height="22" rx="6" fill="#FEE500" />
+                <path
+                  d="M12 4.6c-4.7 0-8.5 2.93-8.5 6.55 0 2.34 1.6 4.4 3.99 5.55l-.92 3.26c-.08.28.22.51.47.34l3.83-2.5c.37.04.74.06 1.13.06 4.7 0 8.5-2.93 8.5-6.55S16.7 4.6 12 4.6z"
+                  fill="#3A1D1D"
+                />
+                <text
+                  x="12"
+                  y="13.1"
+                  textAnchor="middle"
+                  fontFamily="'Arial Black', Arial, sans-serif"
+                  fontSize="4.6"
+                  fontWeight={900}
+                  fill="#FEE500"
+                >
+                  TALK
+                </text>
               </svg>
             </a>
           </div>

@@ -162,7 +162,11 @@ function CustomersContent() {
   const customerColumns: Column<Customer>[] = [
     { header: '누적콜수', render: (c) => <strong>{c.callCount}회</strong> },
     { header: '이름', render: (c) => <strong style={{ fontSize: '1.1rem' }}>{c.name}</strong> },
-    { header: '코멘트', render: (c) => c.comment || '-' },
+    { header: '코멘트', render: (c) => (
+      <div style={{ maxWidth: 160, wordBreak: 'break-word', whiteSpace: 'normal', margin: '0 auto' }}>
+        {c.comment || '-'}
+      </div>
+    )},
     { header: '전화번호', render: (c) => (
       <div style={{ textAlign: 'center' }}>
         {phoneVisible[c.seq]
@@ -207,8 +211,22 @@ function CustomersContent() {
         <button className="btn-inline btn-inline-purple" onClick={() => handleMarkNoPhone(c.seq)}>전화상안함</button>
       </div>
     )},
-    { header: '광고명', render: (c) => c.commercialName ?? '-' },
-    { header: '지원경로', render: (c) => c.adSource ?? '-' },
+    { header: '광고명', render: (c) => (
+      <div
+        style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', margin: '0 auto' }}
+        title={c.commercialName ?? '-'}
+      >
+        {c.commercialName ?? '-'}
+      </div>
+    )},
+    { header: '지원경로', render: (c) => (
+      <div
+        style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', margin: '0 auto' }}
+        title={c.adSource ?? '-'}
+      >
+        {c.adSource ?? '-'}
+      </div>
+    )},
     { header: '등록일시', render: (c) => formatDateTime(c.createdDate) },
     { header: '회신일시', render: (c) => formatDateTime(c.lastUpdateDate) },
   ];

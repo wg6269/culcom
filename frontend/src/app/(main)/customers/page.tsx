@@ -200,8 +200,8 @@ function CustomersContent() {
         ))}
       </div>
     )},
-    { header: '인터뷰확정일시', render: (c) => (
-      <div style={{ display: 'flex', gap: '0.3rem', alignItems: 'center' }} onClick={(e) => e.stopPropagation()}>
+    { header: '인터뷰확정일시', style: { width: 1, whiteSpace: 'nowrap' }, render: (c) => (
+      <div style={{ display: 'inline-flex', gap: '0.3rem', alignItems: 'center' }} onClick={(e) => e.stopPropagation()}>
         <DateTimePicker
           value={interviewInputs[c.seq] ?? ''}
           onChange={(v) => setInterviewInputs(prev => ({ ...prev, [c.seq]: v }))}
